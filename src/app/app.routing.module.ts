@@ -20,6 +20,7 @@ const routes: Routes = [
     },              
     { 
         path: 'user/:userName', 
+        pathMatch: 'full',
         component: PhotoListComponent,
         resolve: {
             photos: PhotoListResolver
