@@ -8,11 +8,11 @@ const API = 'http://localhost:3000';
 @Injectable({ providedIn: 'root' })
 export class PhotoService {
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {}
 
     listFromUser(userName: string) {
         return this.http
-            .get<Photo[]>(API + '/' + userName + '/photos');
+            .get<Photo[]>(API + '/' + userName + '/photos');       
     }
 
     listFromUserPaginated(userName: string, page: number) {
@@ -20,11 +20,11 @@ export class PhotoService {
             .append('page', page.toString());
 
         return this.http
-            .get<Photo[]>(API + '/' + userName + '/photos', { params });
-    }
-
+            .get<Photo[]>(API + '/' + userName + '/photos', { params });       
+    } 
+    
     upload(description: string, allowComments: boolean, file: File) {
-
+        
         const formData = new FormData();
         formData.append('description', description);
         formData.append('allowComments', allowComments ? 'true' : 'false');
@@ -33,5 +33,4 @@ export class PhotoService {
         return this.http.post(API + '/photos/upload', formData);
 
     }
-
 }
