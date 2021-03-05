@@ -3,11 +3,20 @@
     <div class="col-md-6 text-center">
       <div class="form-group" *ngIf="!preview; else previewImage">
         <button immediateClick type="button" (click)="fileInput.click()" class="btn btn-primary">
-          <i class="fa fa-image fa-4x align-middle"></i>
-        </button>
-        <input #fileInput hidden formControlName="file" type="file" accept="image/*"
-          (change)="handleFile($event.target.files[0])">
-        <ap-vmessage text="Please, select a photo" *ngIf="photoForm.get('file').errors?.required">
+              <i class="fa fa-image fa-4x align-middle"></i>
+        </button>      
+        <input 
+          #fileInput
+          hidden
+          formControlName="file" 
+          type="file" 
+          accept="image/*"
+          (change)="handleFile($event.target.files[0])"
+        >
+        <ap-vmessage
+          text="Please, select a photo" 
+          *ngIf="photoForm.get('file').errors?.required"
+        >
         </ap-vmessage>
       </div>
 
@@ -22,16 +31,21 @@
 
     <div class="col-md-6">
       <div class="form-group">
-        <textarea formControlName="description" class="form-control form-control-sm"
+        <textarea 
+          formControlName="description" 
+          class="form-control form-control-sm" 
           placeholder="photo description"></textarea>
-        <ap-vmessage text="Max length is 300" *ngIf="photoForm.get('description').errors?.maxlength">
-        </ap-vmessage>
+          <ap-vmessage
+            text="Max length is 300" 
+            *ngIf="photoForm.get('description').errors?.maxlength"
+          >
+        </ap-vmessage>          
       </div>
 
       <div class="form-group">
         <label class="text-muted">
           Allow comments
-          <input formControlName="allowComments" type="checkbox">
+          <input formControlName="allowComments"  type="checkbox">
         </label>
       </div>
 
